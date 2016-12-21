@@ -1,0 +1,11 @@
+---
+
+- name: rsync serverspec test related to the role
+  synchronize: >
+    src="{{ playbook_dir }}/roles/{{ role_tests }}/tests/"
+    dest=/opt/serverspec/spec/localhost/
+    checksum=yes
+    recursive=yes
+    times=no
+    owner=no
+    group=no

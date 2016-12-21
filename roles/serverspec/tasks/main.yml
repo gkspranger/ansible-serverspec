@@ -1,0 +1,24 @@
+---
+  
+- name: install needed serverspec gems
+  gem: >
+    name={{ item }}
+    state=present
+  with_items:
+    - rake
+    - serverspec
+    
+- name: setup test framework
+  file: >
+    path=/opt/serverspec/
+    state=directory
+
+- name: rsync serverspec-init structure
+  synchronize: >
+    src="{{ playbook_dir }}/roles/serverspec/files/"
+    dest=/opt/serverspec/
+    checksum=yes
+    recursive=yes
+    times=no
+    owner=no
+    group=no

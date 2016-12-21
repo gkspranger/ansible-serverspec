@@ -1,0 +1,7 @@
+---
+  
+- name: install memcached
+  yum: >
+    name=memcached
+    state=present
+    
