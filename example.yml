@@ -3,9 +3,16 @@
 - hosts: all
   become: True
   roles:
+    # this one 1st so serverspec project layout is setup AOK
     - serverspec
+    # random role
     - httpd
+    # random role
     - memcached
+    # run tests on node if non prod
+    ## can argue why not run said tests ALL the time
+    ## wouldn't you like to know if your sh#t is broke ??
+    ## if people can login to your system, they can break your sh#t
     - role: test
       run_tests: True
       when: not is_prod | default(False)
