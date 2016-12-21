@@ -1,4 +1,4 @@
-# ansible-serverspec
+# (Ansible+ServerSpec)*DRY=HappyUnicorn
 I like Ansible .. I like ServerSpec .. Do you ??
 But how can I:
 * Create tests for a role
@@ -30,3 +30,7 @@ dependencies:
   - role: test
     role_tests: <my-awh-sum-role>
 ```
+
+Keywords
+==========
+Ansible, ServerSpec, automation, test, role, reusable, DRY

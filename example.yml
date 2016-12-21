@@ -6,3 +6,6 @@
     - serverspec
     - httpd
     - memcached
+    - role: test
+      run_tests: True
+      when: not is_prod | default(False)

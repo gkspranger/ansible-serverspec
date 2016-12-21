@@ -1,11 +1,25 @@
 ---
 
-- name: rsync serverspec test related to the role
-  synchronize: >
-    src="{{ playbook_dir }}/roles/{{ role_tests }}/tests/"
-    dest=/opt/serverspec/spec/localhost/
-    checksum=yes
-    recursive=yes
-    times=no
-    owner=no
-    group=no
+# setup serverspec
+- block:
+  - name: rsync serverspec test related to the role
+    synchronize: >
+      src="{{ playbook_dir }}/roles/{{ role_tests }}/tests/"
+      dest=/opt/serverspec/spec/localhost/
+      checksum=yes
+      recursive=yes
+      times=no
+      owner=no
+      group=no
+  when: not run_tests | default(False)
+
+# run serverspec tests
+- block:
+  - name: run serverspec tests
+    shell: |
+      /usr/local/bin/rake spec
+    args:
+      chdir: /opt/serverspec/
+    register: tests
+    changed_when: "tests.rc != 0"
+  when: run_tests | default(False)

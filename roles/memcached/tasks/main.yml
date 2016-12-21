@@ -5,3 +5,8 @@
     name=memcached
     state=present
     
+- name: start and enable service
+  service: >
+    name=memcached
+    state=started
+    enabled=True
