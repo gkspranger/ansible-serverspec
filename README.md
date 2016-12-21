@@ -33,4 +33,4 @@ dependencies:
 
 Keywords
 ==========
-Ansible, ServerSpec, automation, test, role, reusable, DRY
+Ansible, ServerSpec, automation, automated testing, TDD, BDD, test, role, reusable, DRY
